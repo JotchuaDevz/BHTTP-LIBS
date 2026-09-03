@@ -115,7 +115,7 @@ func main() {
 	flag.BoolVar(&selfTest, "self-test", false, "run protocol self-test")
 	flag.Parse()
 	if showVersion {
-		fmt.Printf("SuperFlash BHTTP Server %s\n", version)
+		fmt.Printf("BHTTP Server %s\n", version)
 		return
 	}
 	if selfTest {
@@ -153,7 +153,7 @@ func (s *server) serve() error {
 		return err
 	}
 	s.listener = ln
-	log.Printf("SuperFlash BHTTP %s listening on %s -> SSH %s:%d", version, addr, s.cfg.backendHost, s.cfg.backendPort)
+	log.Printf("BHTTP %s listening on %s -> SSH %s:%d", version, addr, s.cfg.backendHost, s.cfg.backendPort)
 	go s.cleanupLoop()
 	sig := make(chan os.Signal, 2)
 	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
